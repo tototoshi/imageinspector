@@ -1,0 +1,29 @@
+#!/usr/bin/env php
+<?php
+
+function renderPhpToString($file, $vars=null)
+{
+    if (is_array($vars) && !empty($vars)) {
+        extract($vars);
+    }
+    ob_start();
+    include $file;
+    return ob_get_clean();
+}
+
+foreach (array(__DIR__ . '/../../autoload.php', __DIR__ . '/vendor/autoload.php') as $file) {
+    if (file_exists($file)) {
+        define('IMAGE_INSPECTOR_COMPOSER_INSTALL', $file);
+        break;
+    }
+}
+
+require_once IMAGE_INSPECTOR_COMPOSER_INSTALL;
+
+array_shift($argv);
+
+ob_start();
+\ImageInspector\Application::render($argv);
+$html = ob_get_clean();
+
+\ImageInspector\Application::openBrowser($html, $argv);

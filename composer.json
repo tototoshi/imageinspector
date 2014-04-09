@@ -13,6 +13,6 @@
         "phpunithelper/phpunithelper": "dev-master"
     },
     "bin": [
-        "composer/bin/imageinspector"
+        "imageinspector"
     ]
 }
