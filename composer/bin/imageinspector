@@ -10,7 +10,7 @@ IMAGE_OUTPUT_DIR=$OUTPUT_DIR/images
 
 mkdir -p $IMAGE_OUTPUT_DIR
 
-php $(dirname $0)/../tototoshi/imageinspector/Application.php "$@" > $OUTPUT_DIR/index.html
+php $(dirname $0)/../tototoshi/imageinspector/src/ImageInspector/Application.php "$@" > $OUTPUT_DIR/index.html
 
 cp "$@" $IMAGE_OUTPUT_DIR
 
