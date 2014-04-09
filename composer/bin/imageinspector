@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+if [ -d inspector ]; then
+    echo "'inspector' directory already exists." 2>&1
+    exit;
+fi
+
+OUTPUT_DIR=$(mktemp -d -t temp.XXXXXX)
+IMAGE_OUTPUT_DIR=$OUTPUT_DIR/images
+
+mkdir -p $IMAGE_OUTPUT_DIR
+
+php $(dirname $0)/../tototoshi/imageinspector/Application.php "$@" > $OUTPUT_DIR/index.html
+
+cp "$@" $IMAGE_OUTPUT_DIR
+
+echo "Wrote to $OUTPUT_DIR"
+open $OUTPUT_DIR/index.html
+
