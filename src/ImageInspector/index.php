@@ -6,7 +6,7 @@
 	<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.1/css/bootstrap.min.css">
 	<style>
 		.check-image {
-			max-withh: 100%;
+			max-width: 100%;
 		}
         .image-detail > tbody > tr > th,
         .image-detail > tbody > tr > td {
