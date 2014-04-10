@@ -12,8 +12,16 @@ require_once IMAGE_INSPECTOR_COMPOSER_INSTALL;
 
 array_shift($argv);
 
+$supported_format = array(IMAGETYPE_GIF, IMAGETYPE_PNG, IMAGETYPE_JPEG);
+$supported = array();
+foreach ($argv as $file) {
+    if (is_dir($file)) continue;
+    if (!in_array(exif_imagetype($file), $supported_format, $strict = true)) continue;
+    $supported[] = $file;
+}
+
 ob_start();
-\ImageInspector\Application::render($argv);
+\ImageInspector\Application::render($supported);
 $html = ob_get_clean();
 
-\ImageInspector\Application::openBrowser($html, $argv);
+\ImageInspector\Application::openBrowser($html, $supported);
