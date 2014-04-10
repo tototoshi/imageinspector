@@ -6,8 +6,12 @@
 	<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.1/css/bootstrap.min.css">
 	<style>
 		.check-image {
-			max-width: 100%;
+			max-withh: 100%;
 		}
+        .image-detail > tbody > tr > th,
+        .image-detail > tbody > tr > td {
+            border-top: none;
+        }
 	</style>
 	<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.1/js/bootstrap.min.js"></script>
 </head>
@@ -34,32 +38,37 @@
 		<tr>
 			<td><img class="check-image" src="./images/<?php echo $image_info['filename']; ?>"></td>
 			<td>
-                <dl>
-                    <dt>name</dt>
-                    <dd><?php echo $image_info['filename']; ?></dd>
-                </dl>
-                <dl>
-                    <dt>size</dt>
-                    <dd><?php echo $image_info['size']; ?></dd>
-                </dl>
-                <dl>
-                    <dt>pixel</dt>
-                    <dd><?php echo $image_info['width']; ?>x<?php echo $image_info['height']; ?></dd>
-                </dl>
-                <dl>
-                    <dt>format</dt>
-                    <dd><?php echo $image_info['format']; ?></dd>
-                </dl>
-                <dl>
-                    <dt>colorspace</dt>
-                    <dd><?php echo $image_info['colorspace']; ?></dd>
-                </dl>
-                <?php if ($image_info['frame'] > 1) { ?>
-                <dl>
-                    <dt>frame</dt>
-                    <dd><?php echo $image_info['frame']; ?></dd>
-                </dl>
-                <?php } ?>
+                <table class="table image-detail">
+                    <tbody>
+                    <tr>
+                        <th>name</th>
+                        <td><?php echo $image_info['filename']; ?></td>
+                    </tr>
+                    <tr>
+                        <th>size</th>
+                        <td><?php echo $image_info['size']; ?></td>
+                    </tr>
+                    <tr>
+                        <th>pixel</th>
+                        <td><?php echo $image_info['width']; ?>x<?php echo $image_info['height']; ?></td>
+                    </tr>
+                    <tr>
+                        <th>format</th>
+                        <td><?php echo $image_info['format']; ?></td>
+                    </tr>
+                    <tr>
+                        <th>colorspace</th>
+                        <td><?php echo $image_info['colorspace']; ?></td>
+                    </tr>
+                    <?php if ($image_info['frame'] > 1) { ?>
+                        <tr>
+                            <th>frame</th>
+                            <td><?php echo $image_info['frame']; ?></td>
+                        </tr>
+                    <?php } ?>
+                    </tbody>
+                </table>
+                
 			</td>
 		</tr>
         <?php } ?>
