@@ -36,7 +36,7 @@
 		<tbody>
         <?php foreach($images_info as $image_info) {?>
 		<tr>
-			<td><img class="check-image" src="./images/<?php echo $image_info['filename']; ?>"></td>
+			<td class="well"><img class="check-image" src="./images/<?php echo $image_info['filename']; ?>"></td>
 			<td>
                 <table class="table image-detail">
                     <tbody>
