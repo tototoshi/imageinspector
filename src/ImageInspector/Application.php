@@ -23,6 +23,7 @@ class Application
                 'height' => $image->getImageHeight(),
                 'size' => $image->getImageLength(),
                 'format' => $image->getImageFormat(),
+                'colorspace' => self::getColorSpaceString($image)
             );
 
         }
@@ -44,6 +45,76 @@ class Application
             copy($image, $tmpdir_image . '/' . basename($image));
         }
         exec("open $tmpdir/index.html");
+    }
+
+    private static function getColorSpaceString(\Imagick $image)
+    {
+        $colorspace = $image->getImageColorSpace();
+        switch ($colorspace) {
+            case \imagick::COLORSPACE_UNDEFINED:
+                return 'UNDEFINED';
+                break;
+            case \imagick::COLORSPACE_RGB:
+                return 'RGB';
+                break;
+            case \imagick::COLORSPACE_GRAY:
+                return 'GRAY';
+                break;
+            case \imagick::COLORSPACE_TRANSPARENT:
+                return 'TRANSPARENT';
+                break;
+            case \imagick::COLORSPACE_OHTA:
+                return 'OHTA';
+                break;
+            case \imagick::COLORSPACE_LAB:
+                return 'LAB';
+                break;
+            case \imagick::COLORSPACE_XYZ:
+                return 'XYZ';
+                break;
+            case \imagick::COLORSPACE_YCBCR:
+                return 'YBCR';
+                break;
+            case \imagick::COLORSPACE_YCC:
+                return 'YCC';
+                break;
+            case \imagick::COLORSPACE_YIQ:
+                return 'YIQ';
+                break;
+            case \imagick::COLORSPACE_YPBPR:
+                return 'YPBPR';
+                break;
+            case \imagick::COLORSPACE_YUV:
+                return 'YUV';
+                break;
+            case \imagick::COLORSPACE_CMYK:
+                return 'CMYK';
+                break;
+            case \imagick::COLORSPACE_SRGB:
+                return 'SRGB';
+                break;
+            case \imagick::COLORSPACE_HSB:
+                return 'HSB';
+                break;
+            case \imagick::COLORSPACE_HSL:
+                return 'HSL';
+                break;
+            case \imagick::COLORSPACE_HWB:
+                return 'HWB';
+                break;
+            case \imagick::COLORSPACE_REC601LUMA:
+                return 'REC601LUMA';
+                break;
+            case \imagick::COLORSPACE_REC709LUMA:
+                return 'REC709LUMA';
+                break;
+            case \imagick::COLORSPACE_LOG:
+                return 'LOG';
+                break;
+            case \imagick::COLORSPACE_CMY:
+                return 'CMY';
+                break;
+        }
     }
 
 }

@@ -50,6 +50,10 @@
                     <dt>format</dt>
                     <dd><?php echo $image_info['format']; ?></dd>
                 </dl>
+                <dl>
+                    <dt>colorspace</dt>
+                    <dd><?php echo $image_info['colorspace']; ?></dd>
+                </dl>
 			</td>
 		</tr>
         <?php } ?>
