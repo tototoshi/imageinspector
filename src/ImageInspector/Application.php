@@ -27,6 +27,8 @@ class Application
                 'frame' => $image->getNumberImages()
             );
 
+            $image->clear();
+
         }
 
         include __DIR__ . '/index.php';
