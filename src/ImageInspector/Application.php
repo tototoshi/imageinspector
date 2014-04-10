@@ -21,7 +21,7 @@ class Application
                 'filename' => basename($file),
                 'width' => $image->getImageWidth(),
                 'height' => $image->getImageHeight(),
-                'size' => $image->getImageLength(),
+                'size' => self::getSize($image),
                 'format' => $image->getImageFormat(),
                 'colorspace' => self::getColorSpaceString($image),
                 'frame' => $image->getNumberImages()
@@ -46,6 +46,21 @@ class Application
             copy($image, $tmpdir_image . '/' . basename($image));
         }
         exec("open $tmpdir/index.html");
+    }
+
+    private static function getSize(\Imagick $image)
+    {
+        $size = $image->getImageLength();
+
+        if ($size > 1024 * 1024) {
+            return ceil($size * 10 / 1024 / 1024) / 10 . ' MB';
+        }
+
+        if ($size > 1024) {
+            return ceil($size * 10 / 1024) / 10 . ' KB';
+        }
+
+        return $size . 'B';
     }
 
     private static function getColorSpaceString(\Imagick $image)
