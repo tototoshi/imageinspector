@@ -23,7 +23,8 @@ class Application
                 'height' => $image->getImageHeight(),
                 'size' => $image->getImageLength(),
                 'format' => $image->getImageFormat(),
-                'colorspace' => self::getColorSpaceString($image)
+                'colorspace' => self::getColorSpaceString($image),
+                'frame' => $image->getNumberImages()
             );
 
         }

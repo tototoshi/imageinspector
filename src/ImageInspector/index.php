@@ -54,6 +54,12 @@
                     <dt>colorspace</dt>
                     <dd><?php echo $image_info['colorspace']; ?></dd>
                 </dl>
+                <?php if ($image_info['frame'] > 1) { ?>
+                <dl>
+                    <dt>frame</dt>
+                    <dd><?php echo $image_info['frame']; ?></dd>
+                </dl>
+                <?php } ?>
 			</td>
 		</tr>
         <?php } ?>
